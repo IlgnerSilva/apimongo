@@ -7,7 +7,6 @@ const Usuario = require('./../models/ModeloUsuario');
 const TrataUsuario = require('./../models/TrataUsuario');
 const authConfig = require('../../config/auth.json');
 const mailer = require('../../modules/mailer');
-const console = require('console');
 
 function geradorDeToken(param = {}) {
     return jwt.sign({ param }, authConfig.secret, {
@@ -48,7 +47,6 @@ router.post('/logar', async (req, res) => {
         if (!await bcrypt.compare(senha, usuario.senha)){
             return res.status(400).send({ error: 'Senha inválida' });
         };
-    
         usuario.senha = undefined;
     
         res.send({
