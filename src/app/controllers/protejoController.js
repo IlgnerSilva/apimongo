@@ -11,4 +11,4 @@ router.get('/', (req, res)=> {
     });
 })
 
-module.exports = app => app.use('/projetos', router);
+module.exports = app => app.use('/', router);
